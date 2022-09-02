@@ -9,7 +9,12 @@ import pl.tsmiatacz.mockerror.data.ResponseData;
 
 @RestController
 @RequestMapping("/v1")
-public class ErrorController {
+public class MainController {
+
+    @GetMapping("/isAlive")
+    public ResponseEntity<String> isAlive() {
+        return ResponseEntity.ok("I'm alive!");
+    }
 
     @GetMapping("/{code}")
     public ResponseEntity<ResponseData> respond(@PathVariable int code) {
