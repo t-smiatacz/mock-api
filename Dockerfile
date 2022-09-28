@@ -4,6 +4,6 @@ COPY pom.xml /usr/app
 RUN mvn -f /usr/app/pom.xml clean package
 
 FROM openjdk:17-alpine
-COPY --from=build /usr/app/target/mock-error.jar /usr/app/
-ENTRYPOINT java -Xmx192m -jar /usr/app/mock-error.jar
+COPY --from=build /usr/app/target/mock-api.jar /usr/app/
+ENTRYPOINT java -Xmx192m -jar /usr/app/mock-api.jar
 EXPOSE 8080/tcp

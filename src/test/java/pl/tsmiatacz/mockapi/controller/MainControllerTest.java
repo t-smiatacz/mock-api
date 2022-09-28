@@ -1,4 +1,4 @@
-package pl.tsmiatacz.mockerror.controller;
+package pl.tsmiatacz.mockapi.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,7 +31,7 @@ class MainControllerTest {
     @ParameterizedTest
     @ValueSource(ints = {200, 401, 500, 520})
     void shouldRespondWith200(int statusCode) throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/v1/" + statusCode))
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/error/" + statusCode))
                 .andExpect(status().is(statusCode))
                 .andExpect(content().string(containsString("Responded with: " + statusCode)));
     }

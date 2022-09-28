@@ -1,13 +1,13 @@
-package pl.tsmiatacz.mockerror;
+package pl.tsmiatacz.mockapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MockErrorApplication {
+public class MockApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MockErrorApplication.class, args);
+        SpringApplication.run(MockApiApplication.class, args);
     }
 
 }

@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pl.tsmiatacz</groupId>
-    <artifactId>mock-error</artifactId>
+    <artifactId>mock-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mock-error</name>
-    <description>mock-error</description>
+    <name>mock-api</name>
+    <description>mock-api</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -36,7 +36,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <finalName>mock-error</finalName>
+        <finalName>mock-api</finalName>
     </build>
 
 </project>
