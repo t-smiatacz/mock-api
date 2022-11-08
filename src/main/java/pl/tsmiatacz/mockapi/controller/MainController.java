@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.tsmiatacz.mockapi.data.ErrorData;
 import pl.tsmiatacz.mockapi.data.HistoryData;
+import pl.tsmiatacz.mockapi.data.ObjectData;
 import pl.tsmiatacz.mockapi.service.HistoryService;
 
 import java.time.LocalDateTime;
@@ -15,8 +16,11 @@ import java.util.List;
 @RequestMapping("/v1")
 public class MainController {
 
-    @Autowired
-    private HistoryService historyService;
+    private final HistoryService historyService;
+
+    public MainController(HistoryService historyService) {
+        this.historyService = historyService;
+    }
 
     @GetMapping("/isAlive")
     public ResponseEntity<String> isAlive() {
@@ -36,7 +40,43 @@ public class MainController {
     @GetMapping("/webhooks")
     public List<HistoryData> webhooks() {
         return historyService.list().stream()
-                .sorted(Comparator.comparing(HistoryData::localDateTime).reversed())
+                .sorted(Comparator.comparing(HistoryData::timestamp).reversed())
                 .toList();
+    }
+
+    @PostMapping("/object")
+    public ObjectData postForObject() {
+        return new ObjectData(123L);
+    }
+
+    @PostMapping("/array")
+    public List<ObjectData> postForArray() {
+        return List.of(
+                new ObjectData(21L),
+                new ObjectData(37L));
+    }
+
+    @PutMapping("/object")
+    public ObjectData purForObject() {
+        return new ObjectData(123L);
+    }
+
+    @PutMapping("/array")
+    public List<ObjectData> purForArray() {
+        return List.of(
+                new ObjectData(21L),
+                new ObjectData(37L));
+    }
+
+    @GetMapping("/object")
+    public ObjectData getObject() {
+        return new ObjectData(123L);
+    }
+
+    @GetMapping("/array")
+    public List<ObjectData> getArray() {
+        return List.of(
+                new ObjectData(21L),
+                new ObjectData(37L));
     }
 }
